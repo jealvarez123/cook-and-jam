@@ -14,6 +14,7 @@ class Home extends Component {
         <Video />
         <Videos />
         <SearchContainer />
+        <Recipes />
 
       </div>
     );
