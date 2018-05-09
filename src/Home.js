@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './components/search'
 import Video from './components/video'
-import Recipes from './components/recipes'
+import Videos from './components/videos'
 import SearchContainer from './components/searchContainer'
+import Recipes from './components/recipes'
 
 class Home extends Component {
   render() {
@@ -11,7 +12,7 @@ class Home extends Component {
       <div className="App">
         <Search />
         <Video />
-        <Recipes />
+        <Videos />
         <SearchContainer />
 
       </div>
