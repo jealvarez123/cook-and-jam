@@ -24,7 +24,7 @@ Front page
 
 ## User Stories
 
-As a user, I would like to put my recipes in an app.
+As a user, I would like to Cook using recipes and watching someone cook it in an app.
 
 
 
