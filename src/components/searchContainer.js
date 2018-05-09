@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Search from './search'
 import axios from 'axios';
 
-//GET https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high&key={YOUR_API_KEY}
 
 class SearchContainer extends Component {
 	constructor() {
@@ -24,26 +23,22 @@ class SearchContainer extends Component {
 		});
 	}
 
+  //GET https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high&key={YOUR_API_KEY}
 	handleSubmit(e) {
 		e.preventDefault();
-		const rootUrl = "https://www.googleapis.com/youtube/v3/search?key="
-		let response = axios.get(rootUrl+ this.state.query + "&api_key=" + this.API_KEY + "&limit=10");
+		const rootUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high&key="
+		let response = axios.get(rootUrl + this.API_KEY );
 		let self = this;
 
 		response.then(function(data){
 			self.setState({
-				response: data.data.data
+				response: data
 			});
 		});
 	}
 
 	render() {
 		let results;
-		if (this.state.response) {
-      results = this.state.response.map((item,index) =>
-			  <img key={index} src={item.images.fixed_height_small.url} alt="results" />
-			)
-    }
 
 		return (
 			<div>
@@ -52,7 +47,8 @@ class SearchContainer extends Component {
 						handleSubmit={(e) => {this.handleSubmit(e)}}
 						handleChange={(e) => {this.handleChange(e)}}/>
 				<br />
-				<div>{ results }</div>
+				<div><iframe title="title" width="560" height="315" src={results} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+</div>
 			</div>
 		)
 	}

@@ -3,6 +3,7 @@ import './App.css';
 import Search from './components/search'
 import Video from './components/video'
 import Recipes from './components/recipes'
+import SearchContainer from './components/searchContainer'
 
 class Home extends Component {
   render() {
@@ -11,6 +12,8 @@ class Home extends Component {
         <Search />
         <Video />
         <Recipes />
+        <SearchContainer />
+
       </div>
     );
   }

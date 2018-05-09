@@ -2,24 +2,42 @@ import React from 'react';
 
 import axios from 'axios';
 
-export default class PersonList extends React.Component {
+class Videos extends React.Component {
   state = {
-    persons: []
+    resultyt: []
   }
 
   componentDidMount() {
-    axios.get(`https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10`)
+    axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high&key=AIzaSyDn2xub---lb7l87LvWXEX19XPGc_QK3DY`)
       .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
+        // console.log(res.data);
+        const resultyt = res.data.items.map(obj => 'https://www.youtube.com/embed/' + obj.id.videoId);
+        this.setState({resultyt});
       })
   }
 
   render() {
+    console.log(this.state.resultyt);
+
     return (
-      <ul>
-        { this.state.persons.map(person => <li>{person.name}</li>)}
-      </ul>
+      <div>
+        {
+          this.state.resultyt.map((link,i) => {
+            // console.log(link);
+            var frame =
+             <div className='youtube' key={i}>
+               <iframe  title="unique"width="560" height="315" src={link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+             </div>
+             return frame
+           })
+         }
+         {this.frame}
+
+
+
+    </div>
     )
   }
 }
+
+export default Videos;
