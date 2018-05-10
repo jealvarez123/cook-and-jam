@@ -11,7 +11,7 @@ class SearchContainer extends Component {
 			query: "",
 			response: []
 		}
-		this.API_KEY = "AIzaSyDn2xub---lb7l87LvWXEX19XPGc_QK3DY";
+    
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 
