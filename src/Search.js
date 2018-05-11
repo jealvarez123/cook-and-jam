@@ -5,6 +5,7 @@ class Search extends Component {
 	render() {
 		return (
 			<form onSubmit={this.props.handleSubmit}>
+				{/* <VideoComp query={user input} /> */}
 				<input type="text"
 					value={this.props.query}
 					onChange={this.props.handleChange}
