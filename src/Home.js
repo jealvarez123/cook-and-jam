@@ -1,18 +1,21 @@
 
 import React, { Component } from 'react';
-import SearchContainer from './SearchContainer';
-import VideoContainer from './videoContainer';
+import './App.css'
+import RecipeSearchContainer from './recipeSearchContainer';
+import VideoSearchContainer from './videoSearchContainer';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 let search = ''
 
 class Home extends Component {
 	render() {
 		return (
-			<div>
+			<div className='App'>
 				<h1> Cook Your Way! </h1>
-
-				<VideoContainer query={''}/>
-				<SearchContainer query={''}/>
+				 <MuiThemeProvider>
+				<VideoSearchContainer query={''}/>
+				<RecipeSearchContainer query={''}/>
+			</MuiThemeProvider>
 			</div>
 		)
 	}

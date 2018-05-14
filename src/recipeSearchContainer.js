@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Search from './Search'
+import RecipeSearch from './recipeSearch'
 import axios from 'axios';
 
 
@@ -8,7 +8,7 @@ const spoonUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/rec
 const mashapeKey = '56OOXfxZXcmsh4XJelNuVBN7T1NBp1BWuWqjsnjYgQx5Biq42x';
 
 
-class SearchContainer extends Component {
+class RecipeSearchContainer extends Component {
 	constructor() {
 		super();
 
@@ -30,15 +30,26 @@ class SearchContainer extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		// the recipe by name
 		let response = axios.get(spoonUrl+ this.state.query + "&limit=10", {headers: {'X-Mashape-Key': mashapeKey, 'Accept': 'application/json'}});
+
 	  let self = this;
 	  console.log(self);
-
+// debugger
 		response.then(function(response){
+			//grabbing the id of the recipe
+		// 	let recipeId = axios.get(spoonUrl+ this.state.query + "&limit=10", {headers: {'X-Mashape-Key': mashapeKey, 'Accept': 'application/json'}});
+		// 	let recipeResponse = axios.get(spoonUrl + recipeId + "&limit=10",
+		// 		//	^^^^
+		// 	 {headers: {'X-Mashape-Key': mashapeKey, 'Accept': 'application/json'}});
+		// 	recipeResponse.then((res) => {
 
-			self.setState({
-				foodData: response.data
-			});
+				self.setState({
+					foodData: response.data
+											//^^^
+
+				})
+			// });
 		});
 	}
 
@@ -47,7 +58,7 @@ class SearchContainer extends Component {
 		if (this.state.foodData.results) {
        results = this.state.foodData.results.map((item,index) =>
 			 <div>
-				 <h2>{item.title}</h2>
+				 <h2>{item.id}</h2>
 				 <img src={this.state.foodData.baseUri + item.image}/>
 			 </div>
 
@@ -57,7 +68,7 @@ class SearchContainer extends Component {
 		return (
 			<div>
 
-				<Search query={this.state.query}
+				<RecipeSearch query={this.state.query}
 						handleSubmit={(e) => {this.handleSubmit(e)}}
 						handleChange={(e) => {this.handleChange(e)}}/>
 				<br />
@@ -67,4 +78,4 @@ class SearchContainer extends Component {
 	}
 }
 
-export default SearchContainer;
+export default RecipeSearchContainer;

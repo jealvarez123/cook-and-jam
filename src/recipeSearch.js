@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-class Search extends Component {
+class recipeSearch extends Component {
 
 	render() {
 		return (
+			<div className='recipeForm'>
+
 			<form onSubmit={this.props.handleSubmit}>
 				{/* <VideoComp query={user input} /> */}
 				<input type="text"
@@ -12,8 +14,9 @@ class Search extends Component {
 				/>
 	            <input type="submit" value="Search"/>
 			</form>
+		</div>
 		)
 	}
 }
 
-export default Search;
+export default recipeSearch;
