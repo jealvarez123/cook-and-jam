@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import VideoSearch from './components/videoSearch'
 import axios from 'axios';
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 const youtubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=viewCount&type=video&videoDefinition=high&q=';
 
 let query = ''
+
 
 
 const youtubeKey = '&key=AIzaSyDn2xub---lb7l87LvWXEX19XPGc_QK3DY'
@@ -14,7 +15,6 @@ const youtubeKey = '&key=AIzaSyDn2xub---lb7l87LvWXEX19XPGc_QK3DY'
 class VideoSearchContainer extends Component {
   constructor() {
 		super();
-
 		this.state = {
 			query: "",
 			youtubeVideos: []
@@ -44,14 +44,14 @@ class VideoSearchContainer extends Component {
     });
   }
   render() {
-    let resultsyt;
-    if (this.state.youtubeVideos.resultsyt) {
-      resultsyt = this.state.youtubeVideos.resultsyt.map((item,index) =>
-      <div>
-        <h2>{item.id}</h2>
-      </div>
-    )
-  }
+  //   let resultsyt;
+  //   if (this.state.youtubeVideos.resultsyt) {
+  //     resultsyt = this.state.youtubeVideos.resultsyt.map((item,index) =>
+  //     <div>
+  //       <h2>{item.id}</h2>
+  //     </div>
+  //   )
+  // }
   return (
     <div>
       <VideoSearch query={this.state.query}
@@ -59,7 +59,19 @@ class VideoSearchContainer extends Component {
         handleChange={(e) => {this.handleChange(e)}}/>
         <br />
         <div>
-          {resultsyt}
+          <RaisedButton label="Default" />
+          {/* {
+            this.state.youtubeVideos.map((link,i) => {
+              // console.log(link);
+              var frame =
+               <div className='youtube' key={i}>
+                 <iframe  title="unique"width="560" height="315" src={link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+               </div>
+               return frame ``
+             })
+           }
+           {this.frame} */}
+
         </div>
       </div>
     )
