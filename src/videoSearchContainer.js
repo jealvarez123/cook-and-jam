@@ -38,44 +38,31 @@ class VideoSearchContainer extends Component {
 	  console.log(self);
 
 		response.then(function(response){
-
-			self.setState({
-				youtubeVideos: response.data
-			});
-		});
-	}
-
-	render() {
-		let resultsyt;
-		if (this.state.youtubeVideos.resultsyt) {
-       resultsyt = this.state.youtubeVideos.resultsyt.map(obj => 'https://www.youtube.com/embed/' + obj.id.videoId)
-       this.setState({resultsyt});
-
+      self.setState({
+        youtubeVideos: response.data
+      });
+    });
+  }
+  render() {
+    let resultsyt;
+    if (this.state.youtubeVideos.resultsyt) {
+      resultsyt = this.state.youtubeVideos.resultsyt.map((item,index) =>
       <div>
-
-
+        <h2>{item.id}</h2>
       </div>
-
-    }
-
-		return (
-			<div>
-
-				<VideoSearch query={this.state.query}
-						handleSubmit={(e) => {this.handleSubmit(e)}}
-						handleChange={(e) => {this.handleChange(e)}}/>
-				<br />
-
-      	<div className='videoResults'>
-          <h1>
-            { resultsyt }
-          </h1>
-
-
+    )
+  }
+  return (
+    <div>
+      <VideoSearch query={this.state.query}
+        handleSubmit={(e) => {this.handleSubmit(e)}}
+        handleChange={(e) => {this.handleChange(e)}}/>
+        <br />
+        <div>
+          {resultsyt}
         </div>
-			</div>
-		)
+      </div>
+    )
   }
 }
-
 export default VideoSearchContainer;

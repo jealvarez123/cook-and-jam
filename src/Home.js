@@ -12,10 +12,10 @@ class Home extends Component {
 		return (
 			<div className='App'>
 				<h1> Cook Your Way! </h1>
-				 <MuiThemeProvider>
+				 {/* <MuiThemeProvider> */}
 				<VideoSearchContainer query={''}/>
 				<RecipeSearchContainer query={''}/>
-			</MuiThemeProvider>
+			{/* </MuiThemeProvider> */}
 			</div>
 		)
 	}

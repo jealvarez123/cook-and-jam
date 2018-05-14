@@ -9,14 +9,11 @@ class VideoSearch extends Component {
 					{/* <VideoComp query={user input} /> */}
 					<input type="text"
 						value={this.props.query}
-						onChange={this.props.handleChange}
-					/>
-					<input type="submit" value="Search"/>
+						onChange={this.props.handleChange}/>
+					<input type="submit" value="Search"	/>
 				</form>
-
-		</div>
+			</div>
 		)
 	}
 }
-
 export default VideoSearch;
