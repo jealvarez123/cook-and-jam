@@ -42,10 +42,10 @@ class RecipeSearchContainer extends Component {
 			axios.get(spoonByIdUrl + recipeId + endOfSpoonByIdUrl,
 			{headers: {'X-Mashape-Key': mashapeKey, 'Accept': 'application/json'}}
 		).then((res) => {
-			console.log(res.data);
+			// console.log(res.data);
 
 			// self.setState({
-			// 	foodData: res.data[0]
+				foodData: res.data[0]
 				})
 			});
 	}

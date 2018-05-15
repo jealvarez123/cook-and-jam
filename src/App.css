@@ -3,6 +3,22 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html {
+  background-image: url('https://i.imgur.com/19QCEeX.png');
+}
+
+.titleFont {
+  font-size: 110%;
+  /* border: 1px solid black; */
+  text-decoration: underline;
+}
+
+
+.Submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

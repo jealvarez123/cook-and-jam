@@ -11,7 +11,10 @@ class Home extends Component {
 	render() {
 		return (
 			<div className='App'>
-				<h1> Cook Your Way! </h1>
+				<div className='titleFont'>
+					<h1> Cook Your Way! </h1>
+				</div>
+
 				 <MuiThemeProvider>
 				<VideoSearchContainer query={''}/>
 				<RecipeSearchContainer query={''}/>

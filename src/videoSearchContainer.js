@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import VideoSearch from './components/videoSearch'
 import axios from 'axios';
 import RaisedButton from 'material-ui/RaisedButton';
+import YouTube from 'react-youtube';
 
 const youtubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=viewCount&type=video&videoDefinition=high&q=';
 
@@ -39,42 +40,48 @@ class VideoSearchContainer extends Component {
 
 		response.then(function(response){
       self.setState({
-        youtubeVideos: response.data
+        youtubeVideos: response.data.items[0].id.videoId
+
       });
     });
   }
   render() {
-  //   let resultsyt;
-  //   if (this.state.youtubeVideos.resultsyt) {
-  //     resultsyt = this.state.youtubeVideos.resultsyt.map((item,index) =>
-  //     <div>
-  //       <h2>{item.id}</h2>
-  //     </div>
-  //   )
-  // }
+
+    // let resultsyt;
+		// if (this.state.youtubeVideos.resultsty) {
+    //    resultsty = this.state.youtubeVideos.resultsyt.map((item,index) =>
+			 <div>
+         {/* <YouTube
+                videoId= {youtubeVideos}
+                opts={opts}
+                onReady={this._onReady}
+              /> */}
+			 </div>
+		//  )
+	 // }
+
+    const opts = {
+      height: '390',
+      width: '640',
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
+    };
   return (
     <div>
       <VideoSearch query={this.state.query}
         handleSubmit={(e) => {this.handleSubmit(e)}}
         handleChange={(e) => {this.handleChange(e)}}/>
         <br />
-        <div>
-          <RaisedButton label="Default" />
-          {/* {
-            this.state.youtubeVideos.map((link,i) => {
-              // console.log(link);
-              var frame =
-               <div className='youtube' key={i}>
-                 <iframe  title="unique"width="560" height="315" src={link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-               </div>
-               return frame ``
-             })
-           }
-           {this.frame} */}
 
-        </div>
+
+
+
+
+
+
       </div>
     )
-  }
+    }
 }
 export default VideoSearchContainer;
