@@ -32,28 +32,24 @@ class recipeSearch extends Component {
 			// 		<input type="submit" value="Search"/>
 			// 	</form> */}
 
+			<TextField
+				type="text"
+				value={this.props.query}
+				onChange={this.props.handleChange}
+				hintText="Hint Text"
+				floatingLabelText="Search for Recipes"
+			/><br />
 			<RaisedButton
 	 		 onClick={this.props.handleSubmit}
 	 		 type="submit"
-	 		 label="Let's begin"
+	 		 label="Let's Cook"
 	 		 labelPosition="before"
 	 		 primary={true}
 	 		 // icon={<Kitchen />}
 	 		 style={styles.button}
 	 		/>
-
-	 	 <TextField
-	 		 type="text"
-	 		 value={this.props.query}
-	 		 onChange={this.props.handleChange}
-	 		 hintText="Hint Text"
-	 		 floatingLabelText="Search for Recipes"
-	 	 /><br />
-
-
-
-			</div>
-		)
-	}
+		</div>
+	)
+}
 }
 export default recipeSearch;

@@ -5,8 +5,6 @@ import RecipeSearchContainer from './recipeSearchContainer';
 import VideoSearchContainer from './videoSearchContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-let search = ''
-
 class Home extends Component {
 	render() {
 		return (
@@ -14,14 +12,12 @@ class Home extends Component {
 				<div className='titleFont'>
 					<h1> Cook Your Way! </h1>
 				</div>
-
-				 <MuiThemeProvider>
-				<VideoSearchContainer query={''}/>
-				<RecipeSearchContainer query={''}/>
-			</MuiThemeProvider>
+				<MuiThemeProvider>
+					<VideoSearchContainer query={''}/>
+					<RecipeSearchContainer query={''}/>
+				</MuiThemeProvider>
 			</div>
 		)
 	}
 }
-
 export default Home;

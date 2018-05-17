@@ -30,9 +30,7 @@ class VideoSearch extends Component {
 						onChange={this.props.handleChange}/>
 					<input type="submit" value="Search"	/>
 				 </form> */}
-
-
-					{/* <form onSubmit={this.props.handleSubmit}> */}
+				{/* <form onSubmit={this.props.handleSubmit}> */}
 						{/* <VideoComp query={user input} /> */}
 						{/* <input type="text"
 							value={this.props.query}
@@ -40,31 +38,24 @@ class VideoSearch extends Component {
 						/>
 						<input type="submit" value="Search"/> */}
 					{/* </form> */}
-
+			<TextField
+				type="text"
+				value={this.props.query}
+				onChange={this.props.handleChange}
+				hintText="Hint Text"
+				floatingLabelText="Search for Cooking Videos"
+			/><br />
      <RaisedButton
 			 onClick={this.props.handleSubmit}
 			 type="submit"
-       label="Let's begin"
+       label="Let's Cook"
        labelPosition="before"
        primary={true}
        // icon={<Kitchen />}
        style={styles.button}
    		/>
-
-		 <TextField
-			 type="text"
-			 value={this.props.query}
-			 onChange={this.props.handleChange}
-			 hintText="Hint Text"
-			 floatingLabelText="Search for Cooking Videos"
-		 /><br />
-
-
-
-
-
-			</div>
-		)
-	}
+		</div>
+	)
+}
 }
 export default VideoSearch;

@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import VideoSearch from './components/videoSearch'
 import axios from 'axios';
-import RaisedButton from 'material-ui/RaisedButton';
 import YouTube from 'react-youtube';
 
 const youtubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=viewCount&type=video&videoDefinition=high&q=';
 
 let query = ''
 
-
-
 const youtubeKey = '&key=AIzaSyDn2xub---lb7l87LvWXEX19XPGc_QK3DY'
-
 
 class VideoSearchContainer extends Component {
   constructor() {
@@ -38,7 +34,7 @@ class VideoSearchContainer extends Component {
 	  let self = this;
 	  console.log(self);
 
-		response.then(function(response){
+    response.then(function(response){
       self.setState({
         youtubeVideos: response.data.items[0].id.videoId
 
@@ -51,11 +47,7 @@ class VideoSearchContainer extends Component {
 		// if (this.state.youtubeVideos.resultsty) {
     //    resultsty = this.state.youtubeVideos.resultsyt.map((item,index) =>
 			 <div>
-         {/* <YouTube
-                videoId= {youtubeVideos}
-                opts={opts}
-                onReady={this._onReady}
-              /> */}
+         {/*  */}
 			 </div>
 		//  )
 	 // }
@@ -74,14 +66,13 @@ class VideoSearchContainer extends Component {
         handleChange={(e) => {this.handleChange(e)}}/>
         <br />
 
-
-
-
-
-
-
-      </div>
-    )
-    }
-}
-export default VideoSearchContainer;
+        <YouTube
+               videoId= 'VYOjWnS4cMY'
+               opts={opts}
+               onReady={this._onReady}
+             />
+           </div>
+         )
+       }
+     }
+     export default VideoSearchContainer;
