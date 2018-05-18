@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import RecipeSearch from './recipeSearch';
 import axios from 'axios';
-import REACT_APP_MASHAPE from './keys'
+import keys from './keys'
 
 const spoonUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=';
 
-const mashapeKey = REACT_APP_MASHAPE;
+const mashapeKey = keys.REACT_APP_MASHAPE;
 const spoonByIdUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' ;
 const endOfSpoonByIdUrl = '/analyzedInstructions?stepBreakdown=true';
 
@@ -15,7 +15,7 @@ class RecipeSearchContainer extends Component {
 
 		this.state = {
 			query: "",
-			foodData: []
+			foodData: {}
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,45 +27,62 @@ class RecipeSearchContainer extends Component {
 	}
 	handleSubmit(e) {
 		e.preventDefault();
+		let thisContainer = this;
 		// Getting the recipe itself
 		axios.get(spoonUrl+ this.state.query + "&limit=10",
-		 {headers: {'X-Mashape-Key': mashapeKey, 'Accept': 'application/json'}}
+			{
+				headers: {
+					'X-Mashape-Key': mashapeKey,
+					'Accept': 'application/json'
+				}
+			}
 	 	).then(function(recipeDataWithId){
+				console.log(recipeDataWithId.data.results[0]);
+				thisContainer.setState({
+					foodData:{
+						title: recipeDataWithId.data.results[0].title,
+						image: recipeDataWithId.data.results[0].image
+					}
+				})
+
 			// Getting the recipe steps
 			let recipeId = recipeDataWithId.data.results[0].id
 			axios.get(spoonByIdUrl + recipeId + endOfSpoonByIdUrl,
-			{headers: {'X-Mashape-Key': mashapeKey, 'Accept': 'application/json'}}
+				{
+					headers: {
+						'X-Mashape-Key': mashapeKey,
+						'Accept': 'application/json'
+					}
+				}
 		).then((res) => {
+
 			console.log(res.data);
-			// this.setState({
-			// 	foodData: res.data[0]
+				let foodData = this.state.foodData;
+				foodData.steps = res.data[0].steps
+			this.setState({
+				foodData: foodData
 				})
 			});
 	}
 
 
 	render() {
-		let results = [];
-		if (this.state.foodData.results) {
-       results = this.state.foodData.results.map((item,index) => {
+		let steps = this.state.foodData.steps.map( => {
 
 
-		 <div>
-			<h2>{item.steps}</h2>
-			<img src={this.state.foodData.baseUri + item.image}/>
-		</div> }
-	)
-	 }
-
-	 return (
-		 <div>
-			 <RecipeSearch query={this.state.query}
-				 handleSubmit={(e) => {this.handleSubmit(e)}}
-				 handleChange={(e) => {this.handleChange(e)}}/>
-				 <br />
-				 <div>{ results }</div>
-			 </div>
-		 )
-	 }
- }
- export default RecipeSearchContainer;
+		})
+		return (
+			<div>
+				<RecipeSearch query={this.state.query}
+					handleSubmit={(e) => {this.handleSubmit(e)}}
+					handleChange={(e) => {this.handleChange(e)}}/>
+					<br />
+					<div>
+						<h2>{item.title}</h2>
+						<img src={this.state.foodData.baseUri + item.image}/>
+					</div>
+				</div>
+			)
+		}
+	}
+	export default RecipeSearchContainer;
