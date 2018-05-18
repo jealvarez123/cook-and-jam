@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import VideoSearch from './components/videoSearch'
 import axios from 'axios';
 import YouTube from 'react-youtube';
+import REACT_APP_YOUTUBE from './keys'
 
 const youtubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=viewCount&type=video&videoDefinition=high&q=';
 
 let query = ''
 
-const youtubeKey = '&key=AIzaSyDn2xub---lb7l87LvWXEX19XPGc_QK3DY'
+const youtubeKey = REACT_APP_YOUTUBE
+
 
 class VideoSearchContainer extends Component {
   constructor() {
@@ -46,9 +48,13 @@ class VideoSearchContainer extends Component {
     // let resultsyt;
 		// if (this.state.youtubeVideos.resultsty) {
     //    resultsty = this.state.youtubeVideos.resultsyt.map((item,index) =>
-			 <div>
-         {/*  */}
-			 </div>
+		// 	 <div>
+    //      {/* <YouTube
+    //             videoId= {resultsyt}
+    //             opts={opts}
+    //             onReady={this._onReady}
+    //           /> */}
+		// // 	 </div>
 		//  )
 	 // }
 
@@ -56,7 +62,7 @@ class VideoSearchContainer extends Component {
       height: '390',
       width: '640',
       playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
+        autoplay: 0
       }
     };
   return (
@@ -65,12 +71,8 @@ class VideoSearchContainer extends Component {
         handleSubmit={(e) => {this.handleSubmit(e)}}
         handleChange={(e) => {this.handleChange(e)}}/>
         <br />
+          {/* <div> {resultsyt} </div> */}
 
-        <YouTube
-               videoId= 'VYOjWnS4cMY'
-               opts={opts}
-               onReady={this._onReady}
-             />
            </div>
          )
        }
