@@ -10,7 +10,6 @@ let query = ''
 
 const youtubeKey = keys.REACT_APP_YOUTUBE
 
-
 class VideoSearchContainer extends Component {
   constructor() {
 		super();
@@ -18,22 +17,18 @@ class VideoSearchContainer extends Component {
 			query: "",
 			youtubeVideos: []
 		}
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-
-	}
-
-	handleChange(e) {
-		this.setState({
-			query: e.target.value,
-		});
-	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-		let response = axios.get(youtubeUrl+ this.state.query + youtubeKey);
-	  let self = this;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    this.setState({
+      query: e.target.value,
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    let response = axios.get(youtubeUrl+ this.state.query + youtubeKey);
+    let self = this;
 
     response.then(function(response){
       self.setState({
@@ -42,6 +37,10 @@ class VideoSearchContainer extends Component {
       });
     });
   }
+
+
+
+
   render() {
     const opts = {
       height: '390',
@@ -73,5 +72,4 @@ class VideoSearchContainer extends Component {
        </div>
      )}
    }
-
-   export default VideoSearchContainer;
+export default VideoSearchContainer;
