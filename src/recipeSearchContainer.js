@@ -55,18 +55,16 @@ class RecipeSearchContainer extends Component {
 					}
 				}
 		).then((res) => {
-
 			console.log(res.data);
-				let foodData = this.state.foodData;
-				foodData.steps = res.data[0].steps
+			let foodData = this.state.foodData;
+			foodData.steps = res.data[0].steps
 			this.setState({
 				foodData: foodData
-				})
-			});
+			})
+		});
 	}
-
-
 	render() {
+
 		let steps = this.state.foodData.steps.map( => {
 
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-// import Kitchen from './components/kitchen';
 import FontIcon from 'material-ui/FontIcon';
 
 const styles = {
